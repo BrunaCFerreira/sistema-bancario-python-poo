@@ -73,7 +73,7 @@ classDiagram
     Conta *-- "1" Historico : -historico
     Cliente "1" -- "*" Conta : -contas / -cliente
     Cliente ..> Transacao : realiza
-
+```
 
 ## 🚀 Funcionalidades do Sistema
 O sistema simula as operações básicas de um caixa eletrônico real:
