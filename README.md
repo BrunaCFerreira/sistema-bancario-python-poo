@@ -6,10 +6,10 @@
 
 Este projeto foi desenvolvido como um desafio prático de código para consolidar os fundamentos de **Orientação a Objetos (POO)** em Python. 
 
-A proposta inicial faz parte da trilha de aprendizado da plataforma DIO. O objetivo desta primeira versão (`sistema_bancario.py`) foi construir toda a lógica matemática e de negócios do zero, transformando um diagrama UML complexo em um sistema funcional rodando diretamente no terminal. O foco absoluto aqui foi garantir que a comunicação entre as classes e os objetos ocorresse de forma perfeita e segura.
+A proposta inicial faz parte da trilha de aprendizado da plataforma DIO. O objetivo foi construir toda a lógica matemática e de negócios do zero, transformando um diagrama UML em um sistema funcional rodando diretamente no terminal. O foco absoluto aqui foi garantir que a comunicação entre as classes e os objetos ocorresse de forma perfeita e segura.
 
 ## 📋 Requisitos do Desafio (Modelagem UML)
-O desafio exigia a atualização de um sistema bancário procedural para o paradigma de Orientação a Objetos, respeitando rigorosamente a seguinte modelagem:
+O desafio exigia a criação de um sistema bancário procedural para o paradigma de Orientação a Objetos, respeitando rigorosamente a seguinte modelagem:
 
 * **Classe `Cliente` e `PessoaFisica`:** Criar uma classe base para clientes com capacidade de armazenar múltiplas contas e realizar transações. A classe filha `PessoaFisica` deve conter CPF, nome e data de nascimento.
 * **Classe `Conta` e `ContaCorrente`:** O banco deve possuir uma classe base de conta, contendo agência, número, saldo e vínculo com um cliente. A classe filha `ContaCorrente` deve implementar as regras de negócio de limite de saque diário (3 saques) e limite de valor por saque (R$ 500,00).
