@@ -15,6 +15,7 @@ O desafio exigia a criação de um sistema bancário procedural para o paradigma
 * **Classe `Conta` e `ContaCorrente`:** O banco deve possuir uma classe base de conta, contendo agência, número, saldo e vínculo com um cliente. A classe filha `ContaCorrente` deve implementar as regras de negócio de limite de saque diário (3 saques) e limite de valor por saque (R$ 500,00).
 * **Classe `Historico`:** Uma classe dedicada a armazenar a lista de todas as transações realizadas em uma conta específica.
 * **Interface `Transacao` (Polimorfismo):** Uma classe abstrata que define um contrato obrigatório (método `registrar`) para as classes filhas `Saque` e `Deposito`, forçando-as a calcular as operações e anotar no histórico da conta.
+
 ```mermaid
 classDiagram
     class Transacao {
@@ -72,6 +73,7 @@ classDiagram
     Conta *-- "1" Historico : -historico
     Cliente "1" -- "*" Conta : -contas / -cliente
     Cliente ..> Transacao : realiza
+
 
 ## 🚀 Funcionalidades do Sistema
 O sistema simula as operações básicas de um caixa eletrônico real:
