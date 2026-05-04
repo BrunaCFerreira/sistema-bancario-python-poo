@@ -15,6 +15,63 @@ O desafio exigia a criação de um sistema bancário procedural para o paradigma
 * **Classe `Conta` e `ContaCorrente`:** O banco deve possuir uma classe base de conta, contendo agência, número, saldo e vínculo com um cliente. A classe filha `ContaCorrente` deve implementar as regras de negócio de limite de saque diário (3 saques) e limite de valor por saque (R$ 500,00).
 * **Classe `Historico`:** Uma classe dedicada a armazenar a lista de todas as transações realizadas em uma conta específica.
 * **Interface `Transacao` (Polimorfismo):** Uma classe abstrata que define um contrato obrigatório (método `registrar`) para as classes filhas `Saque` e `Deposito`, forçando-as a calcular as operações e anotar no histórico da conta.
+```mermaid
+classDiagram
+    class Transacao {
+        <<interface>>
+        +registrar(conta: Conta)
+    }
+
+    class Deposito {
+        -valor: float
+    }
+
+    class Saque {
+        -valor: float
+    }
+
+    class Historico {
+        +adicionar_transacao(transacao: Transacao)
+    }
+
+    class Conta {
+        -saldo: float
+        -numero: int
+        -agencia: str
+        -cliente: Cliente
+        -historico: Historico
+        +saldo(): float
+        +nova_conta(cliente: Cliente, numero: int): Conta
+        +sacar(valor: float): bool
+        +depositar(valor: float): bool
+    }
+
+    class ContaCorrente {
+        -limite: float
+        -limite_saques: int
+    }
+
+    class Cliente {
+        -endereco: str
+        -contas: list
+        +realizar_transacao(conta: Conta, transacao: Transacao)
+        +adicionar_conta(conta: Conta)
+    }
+
+    class PessoaFisica {
+        -cpf: str
+        -nome: str
+        -data_nascimento: date
+    }
+
+    Transacao <|.. Deposito
+    Transacao <|.. Saque
+    Conta <|-- ContaCorrente
+    Cliente <|-- PessoaFisica
+    Historico o-- "*" Transacao : -transacoes
+    Conta *-- "1" Historico : -historico
+    Cliente "1" -- "*" Conta : -contas / -cliente
+    Cliente ..> Transacao : realiza
 
 ## 🚀 Funcionalidades do Sistema
 O sistema simula as operações básicas de um caixa eletrônico real:
